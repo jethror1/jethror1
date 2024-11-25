@@ -27,11 +27,11 @@ jobs:
           if [[ "$today" > "20-21" && "$today" < "22-01" ]]; then
             # set Halloween colours for 10 days before
             palette="color_snake=orange&color_dots=#EBEDF0,#FFEE4A,#FFC501,##fe9600,#03001C"
-          elif [[ "$today" > "12-01" && "$today" < "12-31" ]];
+          elif [[ "$today" > "12-01" && "$today" < "12-31" ]]; then
             # christmas time
             palette=''
           else
-            choices=( 
+            choices=(
               # YlGnBu
               "color_snake=blue&color_dots=#ebedf0,#a1dab4,#41b6c4,#2c7fb8,#253494"
               # Dracula
