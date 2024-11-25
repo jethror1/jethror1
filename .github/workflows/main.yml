@@ -22,6 +22,7 @@ jobs:
     
     steps:
       - name: generate colour scheme
+      - uses: actions/checkout@v4
       - run: |
           today=$(date +%m-%d)
           if [[ "$today" >= "10-21" && "$today" <= "11-31"; then
@@ -31,6 +32,8 @@ jobs:
             # christmas time
             palette=''
           fi
+
+          echo "palette=${palette}" >> $GITHUB_ENV
     
       # generates a snake game from a github user (<github_user_name>) contributions graph, output a svg animation at <svg_out_path>
       - name: generate github-contribution-grid-snake.svg
@@ -38,8 +41,8 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-contribution-grid-snake.svg?$palette
-            dist/github-contribution-grid-snake-dark.svg?$palette
+            dist/github-contribution-grid-snake.svg?${{ env.palette }}
+            dist/github-contribution-grid-snake-dark.svg?${{ env.palette }}
           
           
       # push the content of <build_dir> to a branch
