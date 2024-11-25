@@ -21,14 +21,25 @@ jobs:
     timeout-minutes: 5
     
     steps:
+      - name: generate colour scheme
+      - run: |
+          today=$(date +%m-%d)
+          if [[ "$today" >= "10-21" && "$today" <= "11-31"; then
+            # set Halloween colours for 10 days before
+            palette="color_snake=#03001c&color_dots=#EBEDF0,#FFEE4A,#FFC501,##fe9600,#03001C"
+          else [[ "$today" >= "12-01" && "$today" <= "12-31"]]; then
+            # christmas time
+            palette=''
+          fi
+    
       # generates a snake game from a github user (<github_user_name>) contributions graph, output a svg animation at <svg_out_path>
       - name: generate github-contribution-grid-snake.svg
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-contribution-grid-snake.svg?color_snake=orange&color_dots=#EBEDF0,#FFEE4A,#FFC501,##fe9600,#03001C
-            dist/github-contribution-grid-snake-dark.svg?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+            dist/github-contribution-grid-snake.svg?$palette
+            dist/github-contribution-grid-snake-dark.svg?$palette
           
           
       # push the content of <build_dir> to a branch
