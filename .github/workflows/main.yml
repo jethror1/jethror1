@@ -24,12 +24,12 @@ jobs:
       - name: generate colour scheme
         run: |
           today=$(date +%m-%d)
-          if [[ "$today" > "20-21" && "$today" < "22-01" ]]; then
+          if [[ "$today" > "10-21" && "$today" < "10-32" ]]; then
             # set Halloween colours for 10 days before
             palette="color_snake=orange&color_dots=#EBEDF0,#FFEE4A,#FFC501,##fe9600,#03001C"
           elif [[ "$today" > "12-01" && "$today" < "12-31" ]]; then
             # christmas time
-            palette=''
+            palette="color_snake=yellow&color_dots=#7e131e,#bc3734,#cfad5a,#e5dcb1,#024f1a"
           else
             # set colour palette by day of the week
             choices=(
@@ -48,9 +48,9 @@ jobs:
               # Classic GitHub
               "color_snake=purple&color_dots=#ebedf0,#9be9a8,#40c463,#30a14e,#216e39"
             )
-            palette=${choices[$(( $(date +%u) - 2 ))]}
+            palette=${choices[$(( $(date +%u) - 1 ))]}
           fi
-          echo "####Chosen palette: ${palette}" >> $GITHUB_STEP_SUMMARY
+          echo "#### Chosen palette: ${palette}" >> $GITHUB_STEP_SUMMARY
           echo "palette=${palette}" >> $GITHUB_ENV
     
       # generates a snake game from a github user (<github_user_name>) contributions graph, output a svg animation at <svg_out_path>
