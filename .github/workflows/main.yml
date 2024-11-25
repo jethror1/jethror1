@@ -24,14 +24,32 @@ jobs:
       - name: generate colour scheme
         run: |
           today=$(date +%m-%d)
-          if [[ "$today" > "10-21" && "$today" < "12-01" ]]; then
+          if [[ "$today" > "20-21" && "$today" < "22-01" ]]; then
             # set Halloween colours for 10 days before
-            palette="color_snake=blue&color_dots=#EBEDF0,#FFEE4A,#FFC501,##fe9600,#03001C"
-          else [[ "$today" > "12-01" && "$today" < "12-31" ]];
+            palette="color_snake=orange&color_dots=#EBEDF0,#FFEE4A,#FFC501,##fe9600,#03001C"
+          elif [[ "$today" > "12-01" && "$today" < "12-31" ]];
             # christmas time
             palette=''
+          else;
+            choices=( 
+              # YlGnBu
+              "color_snake=blue&color_dots=#ebedf0,#a1dab4,#41b6c4,#2c7fb8,#253494"
+              # Dracula
+              "color_snake=purple&color_dots=#282a36,#44475a,#6272a4,#bd93f9#ff79c6"
+              # Pink
+              "color_snake=purple&color_dots=#ebedf0,#e48bdc,#ca5bcc,#a74aa8,#61185f"
+              # Solarized Light
+              "color_snake=orange&color_dots=#eee8d5,#b58900,#cb4b16,#dc322f,#6c71c4"
+              # Solarized Dark
+              "color_snake=pink&color_dots=#073642,#268bd2,#2aa198,#b58900,#d33682"
+              # Panda
+              "color_snake=pink&color_dots=#242526,#34353b,#6fc1ff,#19f9d8,#ff4b82"
+              # Classic GitHub
+              "color_snake=purple&color_dots=#ebedf0,#9be9a8,#40c463,#30a14e,#216e39"
+            )
+            palette=${choices[$(( $(date +%u) - 1 ))]}
           fi
-
+          echo "####Chosen palette: ${palette}" >> $GITHUB_STEP_SUMMARY
           echo "palette=${palette}" >> $GITHUB_ENV
     
       # generates a snake game from a github user (<github_user_name>) contributions graph, output a svg animation at <svg_out_path>
