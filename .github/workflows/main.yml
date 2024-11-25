@@ -30,7 +30,7 @@ jobs:
           elif [[ "$today" > "12-01" && "$today" < "12-31" ]];
             # christmas time
             palette=''
-          else;
+          else
             choices=( 
               # YlGnBu
               "color_snake=blue&color_dots=#ebedf0,#a1dab4,#41b6c4,#2c7fb8,#253494"
