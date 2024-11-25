@@ -31,6 +31,7 @@ jobs:
             # christmas time
             palette=''
           else
+            # set colour palette by day of the week
             choices=(
               # YlGnBu
               "color_snake=blue&color_dots=#ebedf0,#a1dab4,#41b6c4,#2c7fb8,#253494"
@@ -47,7 +48,7 @@ jobs:
               # Classic GitHub
               "color_snake=purple&color_dots=#ebedf0,#9be9a8,#40c463,#30a14e,#216e39"
             )
-            palette=${choices[$(( $(date +%u) - 1 ))]}
+            palette=${choices[$(( $(date +%u) - 2 ))]}
           fi
           echo "####Chosen palette: ${palette}" >> $GITHUB_STEP_SUMMARY
           echo "palette=${palette}" >> $GITHUB_ENV
