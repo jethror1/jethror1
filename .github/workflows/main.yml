@@ -25,9 +25,9 @@ jobs:
         run: |
           today=$(date +%m-%d)
           if [[ "$today" > "10-21" && "$today" < "10-32" ]]; then
-            # set Halloween colours for 10 days before
+            # halloween time
             palette="color_snake=orange&color_dots=#EBEDF0,#FFEE4A,#FFC501,##fe9600,#03001C"
-          elif [[ "$today" > "12-01" && "$today" < "12-31" ]]; then
+          elif [[ "$today" > "12-01" && "$today" < "12-32" ]]; then
             # christmas time
             palette="color_snake=yellow&color_dots=#7e131e,#bc3734,#cfad5a,#e5dcb1,#024f1a"
           else
