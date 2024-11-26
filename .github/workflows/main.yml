@@ -36,7 +36,7 @@ jobs:
               # YlGnBu
               "color_snake=blue&color_dots=#ebedf0,#a1dab4,#41b6c4,#2c7fb8,#253494"
               # Dracula
-              "color_snake=purple&color_dots=#282a36,#44475a,#6272a4,#bd93f9#ff79c6"
+              "color_snake=purple&color_dots=#282a36,#44475a,#6272a4,#bd93f9,#ff79c6"
               # Pink
               "color_snake=purple&color_dots=#ebedf0,#e48bdc,#ca5bcc,#a74aa8,#61185f"
               # Solarized Light
